@@ -2,24 +2,41 @@ const mysql = require("mysql2/promise");
 
 const dbConfig = require("../config/database");
 
-console.log("DB CONFIG:", dbConfig);
+let pool;
 
-const pool = mysql.createPool({
-  ...dbConfig,
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0,
-});
+async function getPool() {
+  if (!pool) {
+    pool = mysql.createPool({
+      ...dbConfig,
+      waitForConnections: true,
+      connectionLimit: 10,
+      queueLimit: 0,
+      charset: "utf8mb4",
+    });
+  }
+
+  return pool;
+}
 
 async function executeQuery(sql) {
-  let finalSql = sql.trim();
+  const finalSql = sql.trim();
 
-  const [rows] = await pool.query({
-    sql: finalSql,
-    timeout: 10000,
-  });
+  try {
+    const currentPool = await getPool();
 
-  return rows;
+    const [rows] = await currentPool.query({
+      sql: finalSql,
+      timeout: 10000,
+    });
+
+    return rows;
+  } catch (error) {
+    console.error("MYSQL ERROR:", error);
+
+    pool = null;
+
+    throw error;
+  }
 }
 
 module.exports = {

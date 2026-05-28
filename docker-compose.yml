@@ -1,0 +1,30 @@
+services:
+  mysql:
+    image: sakiladb/mysql
+    restart: unless-stopped
+
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./mysql:/docker-entrypoint-initdb.d
+
+  sql-prof-davi:
+    build:
+      context: ./backend
+
+    restart: unless-stopped
+
+    ports:
+      - "3000:3000"
+
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      MYSQL_USER: aluno
+      MYSQL_PASSWORD: aluno
+      MYSQL_DATABASE: sakila
+
+    depends_on:
+      - mysql
+
+volumes:
+  mysql_data:

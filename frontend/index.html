@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SQL Prof. Davi</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="main-wrapper">
+      <div class="main-container">
+        <header class="topbar">
+          <div class="topbar-left">SQL Prof. Davi</div>
+
+          <div class="topbar-center">
+            <button id="contrastBtn" class="top-btn">Contraste</button>
+
+            <button id="decreaseFontBtn" class="top-link">A-</button>
+
+            <button id="increaseFontBtn" class="top-link">A+</button>
+          </div>
+
+          <div class="topbar-right">
+            <a href="#" target="_blank"> ER Original </a>
+
+            <a href="#" target="_blank"> ER Traduzido </a>
+          </div>
+        </header>
+
+        <main class="content-area">
+          <div class="editor-panel">
+            <div class="editor-header">
+              <button id="clearBtn" class="clear-btn">🗑 Clear</button>
+            </div>
+
+            <label for="sqlCode" class="form-label"> SQL code: </label>
+
+            <textarea
+              id="sqlCode"
+              class="form-control sql-textarea"
+              spellcheck="false"
+              placeholder="SELECT * FROM actor;"
+            ></textarea>
+
+            <button id="runBtn" class="run-btn">Run SQL code</button>
+          </div>
+
+          <div class="result-panel">
+            <label class="form-label"> SQL Result: </label>
+
+            <div id="resultBox" class="result-box">
+              <div id="spinner" class="spinner-area d-none">
+                <div class="spinner-border text-primary"></div>
+              </div>
+
+              <div id="resultContent">Waiting SQL execution...</div>
+            </div>
+          </div>
+        </main>
+
+        <footer class="footer">
+          Criado pelo prof. Davi, inspirado na ferramenta SQLizer.
+        </footer>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,32 +1,50 @@
 services:
   mysql:
     image: mysql:8.4
+
     restart: unless-stopped
+
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: sakila
+
     command: --default-authentication-plugin=mysql_native_password
+
     volumes:
       - mysql_data:/var/lib/mysql
       - ./mysql:/docker-entrypoint-initdb.d
+
     ports:
       - "3306:3306"
+
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
 
   app:
     build:
       context: .
       dockerfile: ./backend/Dockerfile
+
+    image: sql-prof-davi
+
     restart: unless-stopped
+
     ports:
       - "3000:3000"
+
     environment:
       MYSQL_HOST: mysql
       MYSQL_PORT: 3306
       MYSQL_USER: aluno
       MYSQL_PASSWORD: aluno
       MYSQL_DATABASE: sakila
+
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
 
 volumes:
   mysql_data:

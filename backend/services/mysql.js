@@ -2,6 +2,8 @@ const mysql = require("mysql2/promise");
 
 const dbConfig = require("../config/database");
 
+console.log("DB CONFIG:", dbConfig);
+
 const pool = mysql.createPool({
   ...dbConfig,
   waitForConnections: true,

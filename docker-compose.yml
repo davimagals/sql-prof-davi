@@ -1,6 +1,6 @@
 services:
   mysql:
-    image: mysql:8.4
+    image: mysql:8.0
 
     restart: unless-stopped
 
@@ -28,8 +28,8 @@ services:
     environment:
       MYSQL_HOST: mysql
       MYSQL_PORT: 3306
-      MYSQL_USER: root
-      MYSQL_PASSWORD: root
+      MYSQL_USER: aluno
+      MYSQL_PASSWORD: aluno
       MYSQL_DATABASE: sakila
 
     depends_on:

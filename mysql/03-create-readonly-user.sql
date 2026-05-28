@@ -1,5 +1,10 @@
 CREATE USER IF NOT EXISTS 'aluno'@'%' IDENTIFIED BY 'aluno';
 
-GRANT SELECT ON sakila.* TO 'aluno'@'%';
+GRANT
+    SELECT,
+    INSERT,
+    UPDATE
+ON sakila.*
+TO 'aluno'@'%';
 
 FLUSH PRIVILEGES;

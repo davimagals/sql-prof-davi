@@ -12,6 +12,7 @@ async function getPool() {
       connectionLimit: 10,
       queueLimit: 0,
       charset: "utf8mb4",
+      namedPlaceholders: true,
     });
   }
 
@@ -26,7 +27,7 @@ async function executeQuery(sql) {
 
     const [rows] = await currentPool.query({
       sql: finalSql,
-      timeout: 10000,
+      timeout: 30000,
     });
 
     return rows;

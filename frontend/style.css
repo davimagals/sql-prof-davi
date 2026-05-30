@@ -183,8 +183,10 @@ body {
     flex-direction: row;
   }
 
-  .editor-panel,
+  .editor-panel {
+    width: 40%;
+  }
   .result-panel {
-    width: 50%;
+    width: 60%;
   }
 }

@@ -110,10 +110,9 @@ body {
 }
 
 .sql-textarea {
-  min-height: 260px;
   resize: vertical;
   font-family: Consolas, monospace;
-  font-size: 1rem;
+  font-size: 1.1rem;
 }
 
 .run-btn {

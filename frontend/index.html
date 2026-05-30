@@ -3,11 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SQL Prof. Davi</title>
+    <title>Professor Davi's SQL Tool</title>
 
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
       rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
     />
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -16,10 +20,13 @@
     <div class="main-wrapper">
       <div class="main-container">
         <header class="topbar">
-          <div class="topbar-left">SQL Prof. Davi</div>
+          <div class="topbar-left">Professor Davi's SQL Tool</div>
 
           <div class="topbar-center">
-            <button id="contrastBtn" class="top-btn">Contraste</button>
+            <button id="contrastBtn" class="top-btn">
+              <i class="bi bi-brightness-high"></i>
+              Contraste
+            </button>
 
             <button id="decreaseFontBtn" class="top-link">A-</button>
 
@@ -27,24 +34,39 @@
           </div>
 
           <div class="topbar-right">
-            <a href="#" target="_blank"> ER Original </a>
-
-            <a href="#" target="_blank"> ER Traduzido </a>
+            <a
+              href="https://davimagals.github.io/computer-teaching/disciplines/database/lessons/Sakila/sakila-er-original.png"
+              target="_blank"
+            >
+              <i class="bi bi-diagram-2"></i>
+              Original ER
+            </a>
+            <a
+              href="https://davimagals.github.io/computer-teaching/disciplines/database/lessons/Sakila/sakila-er-traduzido.png"
+              target="_blank"
+            >
+              <i class="bi bi-diagram-2"></i>
+              Translated ER
+            </a>
           </div>
         </header>
 
         <main class="content-area">
           <div class="editor-panel">
             <div class="editor-header">
-              <button id="clearBtn" class="clear-btn">🗑 Clear</button>
+              <button id="clearBtn" class="clear-btn">
+                <i class="bi bi-trash"></i>
+                Clear
+              </button>
             </div>
 
-            <label for="sqlCode" class="form-label"> SQL code: </label>
+            <label for="sqlCode" class="form-label">SQL code:</label>
 
             <textarea
               id="sqlCode"
               class="form-control sql-textarea"
               spellcheck="false"
+              rows="9"
               placeholder="SELECT * FROM actor;"
             ></textarea>
 
@@ -52,7 +74,7 @@
           </div>
 
           <div class="result-panel">
-            <label class="form-label"> SQL Result: </label>
+            <label class="form-label">SQL result:</label>
 
             <div id="resultBox" class="result-box">
               <div id="spinner" class="spinner-area d-none">
@@ -65,7 +87,13 @@
         </main>
 
         <footer class="footer">
-          Criado pelo prof. Davi, inspirado na ferramenta SQLizer.
+          Created by
+          <a
+            href="https://davimagals.github.io/"
+            target="_blank"
+            class="link-secondary"
+            >Professor Davi</a
+          >, inspired by the SQLizer tool.
         </footer>
       </div>
     </div>
